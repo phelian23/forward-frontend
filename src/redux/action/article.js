@@ -2,6 +2,7 @@ import {
   getArticles,
   getMostViewedArticles,
   getMostRecentArticles,
+  AddView,
 } from '../../api/getArticle'
 import Constants from './constants'
 
@@ -58,6 +59,15 @@ export const updateOffset = (offset) => {
       type: Constants.UPDATE_OFFSET,
       payload: offset,
     })
+  }
+}
+
+export const addViewCount = (id) => async (dispatch) => {
+  try {
+    const article = await AddView(id)
+    dispatch({ type: Constants.ADD_VIEW_COUNT, payload: article.data })
+  } catch (error) {
+    dispatch({ type: Constants.GET_ARTICLES_ERROR, payload: error })
   }
 }
 

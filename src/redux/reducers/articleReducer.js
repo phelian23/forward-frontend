@@ -77,6 +77,16 @@ const articleReducer = (state = initialState, action) => {
         ...state,
         show: !state.show,
       };
+    case Constants.ADD_VIEW_COUNT:
+      return {
+        ...state,
+        articles: state.articles.map((article) => {
+          if (article.id === action.payload.id) {
+            return action.payload;
+          }
+          return article;
+        }),
+      };
     default:
       return state;
   }

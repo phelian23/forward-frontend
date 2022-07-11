@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { AddView } from '../api/getArticle';
+import { addViewCount } from '../redux/action/article';
+import { useDispatch } from 'react-redux';
 
 const Article = ({ article }) => {
   const [readMore, setReadMore] = useState(false);
+  const dispatch = useDispatch();
 
-  const handleReadMore = (id) => {
-    if (!readMore) {
-      AddView(id);
-    }
+  const handleReadMoreView = (id) => {
+    dispatch(addViewCount(id));
     setReadMore(!readMore);
   }
 
@@ -41,8 +41,8 @@ const Article = ({ article }) => {
       </div>
       <div className="article-content">
         <p>{readMore ? article.content : article.content.slice(0, 300)}&nbsp;
-        <button className="readmore-btn" onClick={handleReadMore(article.id)}>{readMore ? 'Read less' : 'Read more'} &#62;</button>
         </p>
+        <button className="readmore-btn" onClick={() => handleReadMoreView(article.id)}>{readMore ? 'Read less' : 'Read more'} &#62;</button>
       </div>
     </div>
   )
