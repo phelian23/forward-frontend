@@ -23,6 +23,6 @@ export default function useArticleQuery(query, offset) {
     } else if (isRecent) {
       dispatch(getMostRecentArticlesAction(offset))
     }
-  }, [debouncedQuery, offset])
+  }, [debouncedQuery, offset, dispatch])
 
 }

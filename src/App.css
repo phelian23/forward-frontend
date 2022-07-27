@@ -98,15 +98,6 @@
   font-size: 18px;
 }
 
-.discover-cont {
-  display: grid;
-  grid-template-columns: auto auto;
-  width: 30vh;
-  position: fixed;
-  top: 15%;
-  right: 3%;
-}
-
 .discover-item {
   margin: 5% 2%;
   width: 80%;
@@ -121,4 +112,100 @@
 .most-items2 {
   font-size: 12px;
   margin-top: 18px;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 0;
+  background: linear-gradient(to top, #fff 0%, transparent 100%);
+  border: none;
+  color: #000;
+  font-size: 40px;
+  padding: 7%;
+  width: 100vw;
+}
+
+.back-to-top-icon {
+  cursor: pointer;
+}
+
+.discover-mobile {
+  display: none;
+}
+
+.discover-desktop .discover-cont {
+  display: grid;
+  grid-template-columns: auto auto;
+  width: 30vh;
+  position: fixed;
+  top: 15%;
+  right: 3%;
+}
+
+@media all and (max-width: 600px) {
+  .logo-link {
+    font-size: 1.2rem;
+    padding: 3% 2% 5% 2%;
+  }
+
+  .discover-icon {
+    font-size: 20px;
+  }
+
+  .discover-span {
+    font-size: 12px;
+  }
+
+  .search-btn {
+    font-size: 16px;
+  }
+
+  .list {
+    width: 90vw;
+    margin-top: 10%;
+  }
+
+  .article-title,
+  .author-cont,
+  .article-content {
+    padding: 2%;
+  }
+
+  .article-title {
+    font-size: 22px;
+  }
+
+  .author-cont {
+    font-size: 12px;
+  }
+
+  .article-content {
+    font-size: 14px;
+  }
+
+  .discover-mobile {
+    display: block;
+  }
+
+  .discover-mobile .discover-cont {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    width: 90vw;
+    margin: 2% auto;
+    background-color: #fff;
+  }
+
+  .discover-item {
+    margin: 3% 2%;
+    width: 90%;
+    padding: 2%;
+    border: 1px solid black;
+    border-radius: 3px;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .discover-desktop {
+    display: none;
+  }
 }

@@ -3,13 +3,10 @@ import Article from "./Article";
 import { useDispatch, useSelector } from "react-redux";
 import useArticleQuery from "../custom/useArticleQuery";
 import {
-  updateOffset,
-  getArticleQuery,
-  getMostRecentArticlesAction,
-  getMostViewedArticlesAction,
-  resetArticles,
+  updateOffset
 } from "../redux/action/article";
-import discoverTags from "./DiscoverTags";
+import BackToTop from "../custom/BackToTop";
+import DiscoverGrid from "./DiscoverGrid";
 
 const ArticleList = () => {
   const dispatch = useDispatch();
@@ -19,7 +16,6 @@ const ArticleList = () => {
   const loading = useSelector((state) => state.article.loading);
   const error = useSelector((state) => state.article.error);
   const hasMore = useSelector((state) => state.article.hasMore);
-  const show = useSelector((state) => state.article.show);
 
   useArticleQuery(query, offset);
 
@@ -38,39 +34,11 @@ const ArticleList = () => {
     [loading, hasMore]
   );
 
-  const handleMostRecent = () => {
-    dispatch(resetArticles());
-    dispatch(getMostRecentArticlesAction(offset));
-  }
-
-  const handleMostViewed = () => {
-    dispatch(resetArticles());
-    dispatch(getMostViewedArticlesAction(offset));
-  }
-
-  const handleDiscoverClick = (e) => {
-    dispatch(getArticleQuery(e.target.innerText));
-  };
+  const curScreen = "desktop";
 
   return (
     <div>
-      {show ? (
-        <div className="discover-cont">
-          {discoverTags.map((tag, index) => {
-            return (
-              <p
-                key={index}
-                onClick={(e) => handleDiscoverClick(e)}
-                className="discover-item"
-              >
-                {tag}
-              </p>
-            );
-          })}
-          <p className="most-items" onClick={handleMostViewed}>Most Viewed</p>
-          <p className="most-items2" onClick={handleMostRecent}>Most Recent</p>
-        </div>
-      ) : null}
+      <DiscoverGrid curScreen={curScreen} />
       <ul className="list">
         {articles.map((article, index) => {
           if (index === articles.length - 1) {
@@ -88,6 +56,7 @@ const ArticleList = () => {
           }
         })}
       </ul>
+      <BackToTop />
       <div>{loading && "Loading"}</div>
       <div>{error && "Error"}</div>
     </div>

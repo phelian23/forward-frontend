@@ -60,6 +60,7 @@ const articleReducer = (state = initialState, action) => {
       return {
         ...state,
         query: action.payload,
+        show: false,
       };
     case Constants.RESET_ARTICLES:
       return {

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const BASE_URL = 'http://localhost:3000/api/v1/articles'
-const VIEW_URL = 'http://localhost:3000/api/v1/views/create'
+const BASE_URL = 'https://forward-backend1.herokuapp.com/api/v1/articles'
+const VIEW_URL = 'https://forward-backend1.herokuapp.com/api/v1/views/create'
 
 const getArticles = async (query, offset) => {
   if (query.length > 0) {

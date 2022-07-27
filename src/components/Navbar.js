@@ -3,6 +3,8 @@ import { IoIosArrowDroprightCircle, IoIosArrowDropdownCircle } from 'react-icons
 import { AiOutlineSearch } from 'react-icons/ai';
 import { getArticleQuery, showDiscover } from '../redux/action/article';
 import { useDispatch, useSelector } from 'react-redux';
+import scrollUp from '../custom/scrollUp';
+import DiscoverGrid from './DiscoverGrid';
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -26,10 +28,12 @@ const Navbar = () => {
     dispatch(showDiscover());
   }
 
+  const curScreen = "mobile";
+
   return (
     <div className="navbar">
       <header className="app-header d-flex align-items-center justify-content-between">
-        <Link to="#top" className="logo-link">FORW&#62;RD</Link>
+        <h2 className="logo-link" onClick={() => scrollUp()}>FORW&#62;RD</h2>
         <nav className="nav-items d-flex align-items-center justify-content-center">
           <button className="discover-btn" onClick={handleDiscover}>
             <div className="discover-btn-div d-flex justify-content-center align-items-center">
@@ -43,6 +47,7 @@ const Navbar = () => {
           </button>
         </nav>
       </header>
+      <DiscoverGrid curScreen={curScreen} />
     </div>
   )
 }
