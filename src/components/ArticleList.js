@@ -31,7 +31,7 @@ const ArticleList = () => {
       });
       if (node) observer.current.observe(node);
     },
-    [loading, hasMore]
+    [loading, hasMore, offset, dispatch]
   );
 
   const curScreen = "desktop";

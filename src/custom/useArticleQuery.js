@@ -13,7 +13,7 @@ export default function useArticleQuery(query, offset) {
   const debouncedQuery = useDebounce(query, 500)
   useEffect(() => {
     dispatch(resetArticles())
-  }, [debouncedQuery])
+  }, [debouncedQuery, dispatch])
 
   useEffect(() => {
     if (isAll) {
@@ -23,6 +23,6 @@ export default function useArticleQuery(query, offset) {
     } else if (isRecent) {
       dispatch(getMostRecentArticlesAction(offset))
     }
-  }, [debouncedQuery, offset, dispatch])
+  }, [debouncedQuery, offset, dispatch, isAll, isViewed, isRecent])
 
 }

@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { IoIosArrowDroprightCircle, IoIosArrowDropdownCircle } from 'react-icons/io';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { getArticleQuery, showDiscover } from '../redux/action/article';
